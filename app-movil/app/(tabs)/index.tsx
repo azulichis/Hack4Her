@@ -29,13 +29,13 @@ const categorias = [
   { id: "8", nombre: "Carnes", icono: "restaurant", color: "#F44336" },
 ]
 
-// Productos con estructura mayorista
+// Productos con estructura mayorista y imágenes reales
 const productosDestacados: Product[] = [
   {
     id: "1",
     nombre: "Coca Cola Original",
     precio: 280.5,
-    imagen: "/placeholder.svg?height=80&width=80",
+    imagen: "../../assets/images/cocas.png",
     cantidadPiezas: 24,
     contenidoMl: 355,
     sabor: "Original",
@@ -46,7 +46,7 @@ const productosDestacados: Product[] = [
     id: "2",
     nombre: "Sabritas Clásicas",
     precio: 320.0,
-    imagen: "/placeholder.svg?height=80&width=80",
+    imagen: "/assets/images/sabritas.png",
     cantidadPiezas: 20,
     contenidoMl: 0,
     sabor: "Sal",
@@ -57,7 +57,7 @@ const productosDestacados: Product[] = [
     id: "3",
     nombre: "Agua Ciel Natural",
     precio: 85.5,
-    imagen: "/placeholder.svg?height=80&width=80",
+    imagen: "/assets/images/ciel.png",
     cantidadPiezas: 24,
     contenidoMl: 600,
     sabor: "Natural",
@@ -68,7 +68,7 @@ const productosDestacados: Product[] = [
     id: "4",
     nombre: "Sprite Lima-Limón",
     precio: 275.0,
-    imagen: "/placeholder.svg?height=80&width=80",
+    imagen: "/assets/images/sprites.jpg",
     cantidadPiezas: 24,
     contenidoMl: 355,
     sabor: "Lima-Limón",
@@ -137,7 +137,7 @@ export default function HomeScreen() {
 
   const renderProducto = ({ item }: { item: Product }) => (
     <TouchableOpacity style={styles.productoCard} onPress={() => handleProductPress(item)}>
-      <Image source={{ uri: item.imagen }} style={styles.productoImagen} />
+      <Image source={{ uri: item.imagen }} style={styles.productoImagen} resizeMode="contain" />
       <View style={styles.productoInfo}>
         <Text style={styles.productoNombre}>{item.nombre}</Text>
         <Text style={styles.productoDetalles}>
@@ -294,7 +294,7 @@ export default function HomeScreen() {
           <View style={styles.modalContent}>
             {selectedProduct && (
               <>
-                <Image source={{ uri: selectedProduct.imagen }} style={styles.modalImagen} />
+                <Image source={{ uri: selectedProduct.imagen }} style={styles.modalImagen} resizeMode="contain" />
                 <Text style={styles.modalNombre}>{selectedProduct.nombre}</Text>
                 <Text style={styles.modalDetalles}>
                   {selectedProduct.cantidadPiezas} piezas •{" "}
@@ -368,6 +368,16 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#666",
     marginLeft: 4,
+  },
+  headerButtons: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 15,
+  },
+  soporteBtn: {
+    padding: 8,
+    borderRadius: 20,
+    backgroundColor: "#f0f8f0",
   },
   notificacionBtn: {
     position: "relative",
@@ -766,15 +776,5 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
-  },
-  headerButtons: {
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 15,
-  },
-  soporteBtn: {
-    padding: 8,
-    borderRadius: 20,
-    backgroundColor: "#f0f8f0",
   },
 })
