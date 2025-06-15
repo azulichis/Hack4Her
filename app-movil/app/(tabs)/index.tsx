@@ -12,6 +12,7 @@ import {
   FlatList,
   SafeAreaView,
   Modal,
+  Alert,
 } from "react-native"
 import { Ionicons } from "@expo/vector-icons"
 import { useCart, type Product } from "../../context/CartContext"
@@ -79,7 +80,7 @@ const productosDestacados: Product[] = [
 const pedidoReciente = {
   numero: "#001237",
   estado: "En tránsito",
-  fechaEntrega: "Lunes 16 de Junio",
+  fechaEntrega: "Lunes 16 de Diciembre",
   progreso: 75,
 }
 
@@ -105,6 +106,26 @@ export default function HomeScreen() {
       setModalVisible(false)
       setSelectedProduct(null)
     }
+  }
+
+  const handleSupportCall = () => {
+    Alert.alert("Soporte Técnico", "¿Cómo te gustaría contactarnos?", [
+      { text: "Cancelar", style: "cancel" },
+      {
+        text: "Llamar",
+        onPress: () => {
+          // En React Native real, usarías: Linking.openURL('tel:+525512345678')
+          Alert.alert("Llamando...", "Conectando con soporte: +52 55 1234-5678")
+        },
+      },
+      {
+        text: "WhatsApp",
+        onPress: () => {
+          // En React Native real, usarías: Linking.openURL('whatsapp://send?phone=525512345678&text=Hola, necesito ayuda con mi pedido')
+          Alert.alert("WhatsApp", "Abriendo chat de soporte...")
+        },
+      },
+    ])
   }
 
   const renderCategoria = ({ item }: { item: any }) => (
@@ -152,12 +173,17 @@ export default function HomeScreen() {
               <Text style={styles.ubicacion}>Mi Tienda - Centro</Text>
             </View>
           </View>
-          <TouchableOpacity style={styles.notificacionBtn}>
-            <Ionicons name="notifications" size={24} color="#f80516" />
-            <View style={styles.notificacionBadge}>
-              <Text style={styles.notificacionTexto}>2</Text>
-            </View>
-          </TouchableOpacity>
+          <View style={styles.headerButtons}>
+            <TouchableOpacity style={styles.soporteBtn} onPress={handleSupportCall}>
+              <Ionicons name="call" size={24} color="#4CAF50" />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.notificacionBtn}>
+              <Ionicons name="notifications" size={24} color="#f80516" />
+              <View style={styles.notificacionBadge}>
+                <Text style={styles.notificacionTexto}>2</Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
 
         {/* Seguimiento de pedido reciente */}
@@ -740,5 +766,15 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
+  },
+  headerButtons: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 15,
+  },
+  soporteBtn: {
+    padding: 8,
+    borderRadius: 20,
+    backgroundColor: "#f0f8f0",
   },
 })
