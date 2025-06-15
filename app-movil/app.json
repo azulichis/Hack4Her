@@ -9,8 +9,14 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSFaceIDUsageDescription": "Usamos Face ID para autenticarte de forma segura"
+      }
     },
+    "infoPlist": {
+        "NSFaceIDUsageDescription": "Usamos Face ID para autenticarte de forma segura"
+      },
     "android": {
       "permissions": ["CAMERA"],
       "adaptiveIcon": {
