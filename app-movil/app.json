@@ -11,14 +11,20 @@
     "ios": {
       "supportsTablet": true,
       "infoPlist": {
-        "NSFaceIDUsageDescription": "Usamos Face ID para autenticarte de forma segura"
-      }
+        "NSFaceIDUsageDescription": "Usamos Face ID para autenticarte de forma segura",
+        "ITSAppUsesNonExemptEncryption": false
+      },
+      "bundleIdentifier": "com.azulichis.appmovil"
     },
     "infoPlist": {
-        "NSFaceIDUsageDescription": "Usamos Face ID para autenticarte de forma segura"
-      },
+      "NSFaceIDUsageDescription": "Usamos Face ID para autenticarte de forma segura"
+    },
     "android": {
-      "permissions": ["CAMERA"],
+      "permissions": [
+        "CAMERA",
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
@@ -45,6 +51,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "82ec0071-0010-4ec5-912a-b4adef3a5cad"
+      }
     }
   }
 }
