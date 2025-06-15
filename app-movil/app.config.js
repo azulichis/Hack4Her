@@ -1,4 +1,5 @@
-{
+import "dotenv/config"
+export default {
   "expo": {
     "name": "app-movil",
     "slug": "app-movil",
@@ -54,6 +55,7 @@
     },
     "extra": {
       "router": {},
+      backendUrl: process.env.EXPO_PUBLIC_BACKEND_API,
       "eas": {
         "projectId": "82ec0071-0010-4ec5-912a-b4adef3a5cad"
       }

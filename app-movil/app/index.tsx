@@ -14,7 +14,7 @@ export default function LoginScreen() {
     });
 
     if (result.success) {
-      router.replace('/(tabs)');
+      router.replace('/voice-auth');
     } else {
       alert('Autenticación fallida');
     }
