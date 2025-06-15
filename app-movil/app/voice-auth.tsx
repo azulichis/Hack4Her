@@ -193,7 +193,7 @@ const VoiceAuthScreen = () => {
     <View style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>Verificación de Voz</Text>
-        <Text style={styles.subtitle}>Di tu nombre para completar la autenticación</Text>
+        <Text style={styles.subtitle}>Di tu primer nombre para completar la autenticación</Text>
       </View>
 
       <View style={styles.microphoneContainer}>

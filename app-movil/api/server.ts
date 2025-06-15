@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import { saveVoiceRecording, getVoiceRecordings } from "./voice-auth";
+import { MongoClient } from "mongodb";
 
 dotenv.config();
 
@@ -21,7 +22,18 @@ app.get("/api/voice-auth", async (req: Request, res: Response) => {
   res.status(result.status).json(result.json);
 });
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
+const PORT = Number(process.env.PORT) || 8080;
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Backend listening on port ${PORT}`);
 });
+
+console.log("Intentando conectar a MongoDB...");
+const client = new MongoClient(process.env.MONGODB_URI!);
+client.connect()
+  .then(() => {
+    console.log("¡Conexión exitosa a MongoDB!");
+    client.close();
+  })
+  .catch(err => {
+    console.error("Error conectando a MongoDB:", err);
+  });

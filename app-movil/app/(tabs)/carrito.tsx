@@ -18,6 +18,8 @@ export default function CarritoScreen() {
   const { cartItems, updateQuantity, removeFromCart, clearCart, getCartTotal, getTotalPackages, getTotalUnits } =
     useCart()
 
+  console.log("Carrito - Items:", cartItems.length, cartItems)
+
   const envio = 45.0
   const total = getCartTotal() + envio
   const fechaEntrega = "Miércoles 18 de Diciembre"

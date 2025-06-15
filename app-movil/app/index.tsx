@@ -8,7 +8,7 @@ export default function LoginScreen() {
 
   const handleBiometricAuth = async () => {
     const result = await LocalAuthentication.authenticateAsync({
-      promptMessage: 'Inicia sesión con Face ID',
+      promptMessage: 'Inicia sesión',
       fallbackLabel: 'Usar contraseña',
       disableDeviceFallback: false,
     });

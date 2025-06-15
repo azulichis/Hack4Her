@@ -79,7 +79,7 @@ const productosDestacados: Product[] = [
 const pedidoReciente = {
   numero: "#001237",
   estado: "En tránsito",
-  fechaEntrega: "Lunes 16 de Diciembre",
+  fechaEntrega: "Lunes 16 de Junio",
   progreso: 75,
 }
 
@@ -99,7 +99,9 @@ export default function HomeScreen() {
 
   const handleAddToCart = () => {
     if (selectedProduct) {
+      console.log("Agregando al carrito:", selectedProduct.nombre, "Cantidad:", cantidadPaquetes)
       addToCart(selectedProduct, cantidadPaquetes)
+      console.log("Total items después de agregar:", getTotalItems())
       setModalVisible(false)
       setSelectedProduct(null)
     }
